@@ -107,7 +107,7 @@ OK, DOkey
 2. Serve the API as it will appear once deployed
 
    ```sh
-   npm run start
+   npm run start:prod
    ```
 
 <hr/>
