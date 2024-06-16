@@ -1,0 +1,25 @@
+{
+    "linter": {
+      "enabled": true,
+      "rules": {
+        "nursery": {
+          "recommended": true
+        },
+        "complexity": {
+          "noForEach": {
+            "level": "off"
+          }
+        },
+        "style": {
+          "noParameterAssign": {
+            "level": "off"
+          }
+        }
+
+
+      }
+    },
+    "formatter": {
+        "ignore": ["node_modules/**/*"]
+      }
+  }

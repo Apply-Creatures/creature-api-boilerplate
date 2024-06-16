@@ -1,0 +1,42 @@
+version: 2
+
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "08:00"
+    timezone: Asia/Hanoi
+  open-pull-requests-limit: 100
+  reviewers:
+  - hirako2000
+  assignees:
+  - hirako2000
+  labels:
+  - dependencies
+  
+- package-ecosystem: github-actions
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: saturday
+    time: "08:00"
+    timezone: Asia/Hanoi
+  open-pull-requests-limit: 100
+  reviewers:
+  - hirako2000
+  assignees:
+  - hirako2000
+
+- package-ecosystem: docker
+  directory: "/"
+  schedule:
+    interval: weekly
+    day: saturday
+    time: "08:00"
+    timezone: Asia/Hanoi
+  open-pull-requests-limit: 100
+  reviewers:
+  - hirako2000
+  assignees:
+  - hirako2000

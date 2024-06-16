@@ -1,0 +1,33 @@
+{
+  "host": "localhost",
+  "port": 3030,
+  "public": "../public/",
+  "paginate": {
+    "default": 10,
+    "max": 50
+  },
+  "authentication": {
+    "secret": "secret",
+    "strategies": [
+      "jwt",
+      "local"
+    ],
+    "path": "/authentication",
+    "service": "users",
+    "entity": "user",
+    "local": {
+      "usernameField": "email",
+      "passwordField": "password"
+    },
+    "jwt": {
+      "header": {
+        "typ": "access"
+      },
+      "audience": "http://localhost",
+      "subject": "anonymous",
+      "issuer": "feathers",
+      "algorithm": "HS256",
+      "expiresIn": "365d"
+    }
+  }
+}
