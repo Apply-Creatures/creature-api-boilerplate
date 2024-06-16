@@ -13,14 +13,14 @@
 
   <h3 align="center">Creature API Boilerplate</h3>
 
-   <a href="https://api.applycreatures.com">
+   <a href="#">
       <img src="public/apply-creatures-logo.png" alt="screenshot" width="30%">
    </a>
 
   <p align="center">
     Boilerplate for REST API components
     <br />
-    <a href="https://boilerplate.applycreatures.com"><strong>See live »</strong></a>
+    <a href="#"><strong>See live (soon) »</strong></a>
     <br />
     <br />
     <a href="https://github.com/apply-creatures/creature-api-boilerplate/issues">Report Bug</a>
@@ -120,7 +120,7 @@ Setting up an API server is a daunting exercise with authorization, doc generate
 So I created a template, that way one can kick things off almost right away.
 
 <div align="center">
-   <a href="https://mtassoumt.uk">
+   <a href="#">
       <img src="public/apply-creatures-logo.png" alt="screenshot" width="60%">
    </a>
 </div>
@@ -294,7 +294,6 @@ If you decide to re-use this repo to build your own stuff, go ahead. No need to 
 **Don't re-republish stuff pretty much as is though**, it is lame, and shameless.
 Tweak it, make it your own. Make it so that I wouldn't come across your stuff  and think that it is mine. So that nobody comes across your stuff and somehow finds out it's a louzy copy of someone else lacking added value and personalisation.
 
-[observatory-shield]: https://img.shields.io/mozilla-observatory/grade-score/mtassoumt.uk?publish&style=for-the-badge
 [contributors-shield]: https://img.shields.io/github/contributors/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
 [contributors-url]: https://github.com/apply-creatures/creature-api-boilerplate/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
@@ -306,7 +305,7 @@ Tweak it, make it your own. Make it so that I wouldn't come across your stuff  a
 [license-shield]: https://img.shields.io/github/license/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
 [license-url]: https://github.com/apply-creatures/creature-api-boilerplate/blob/main/LICENSE
 [score-shield]: https://img.shields.io/ossf-scorecard/github.com/apply-creatures/creature-api-boilerplate?style=for-the-badge
-[score-url]: https://github.com/apply-creatures/mtassoumt.uk
+[score-url]: https://github.com/apply-creatures/creature-api-boilerplate
 [repo-size-shield]: https://img.shields.io/github/repo-size/apply-creatures/creature-api-boilerplate?style=for-the-badge
 [repo-size-url]: https://github.com/apply-creatures/creature-api-boilerplate/archive/refs/heads/main.zip
 [product-screenshot]: images/apply-creatures-logo.png
