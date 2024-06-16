@@ -1,6 +1,5 @@
 <!-- PROJECT SHIELDS -->
 
-[![Uptime][uptime-shield]][uptime-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
@@ -296,8 +295,6 @@ If you decide to re-use this repo to build your own stuff, go ahead. No need to 
 Tweak it, make it your own. Make it so that I wouldn't come across your stuff  and think that it is mine. So that nobody comes across your stuff and somehow finds out it's a louzy copy of someone else lacking added value and personalisation.
 
 [observatory-shield]: https://img.shields.io/mozilla-observatory/grade-score/mtassoumt.uk?publish&style=for-the-badge
-[uptime-shield]: https://img.shields.io/uptimerobot/ratio/m792462927-d88b9d2ebd47a1c7ccdf9763?style=for-the-badge
-[uptime-url]: https://mtassoumt.uk
 [contributors-shield]: https://img.shields.io/github/contributors/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
 [contributors-url]: https://github.com/apply-creatures/creature-api-boilerplate/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
@@ -308,8 +305,6 @@ Tweak it, make it your own. Make it so that I wouldn't come across your stuff  a
 [issues-url]: https://github.com/apply-creatures/creature-api-boilerplate/issues
 [license-shield]: https://img.shields.io/github/license/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
 [license-url]: https://github.com/apply-creatures/creature-api-boilerplate/blob/main/LICENSE
-[w3c-validation-shield]: https://img.shields.io/w3c-validation/html?style=for-the-badge&targetUrl=https%3A%2F%2Fmtassoumt.uk
-[w3c-validation-url]: https://jigsaw.w3.org/css-validator/validator?uri=https%3A%2F%2Fmtassoumt.uk&profile=css3svg&usermedium=all
 [score-shield]: https://img.shields.io/ossf-scorecard/github.com/apply-creatures/creature-api-boilerplate?style=for-the-badge
 [score-url]: https://github.com/apply-creatures/mtassoumt.uk
 [repo-size-shield]: https://img.shields.io/github/repo-size/apply-creatures/creature-api-boilerplate?style=for-the-badge
