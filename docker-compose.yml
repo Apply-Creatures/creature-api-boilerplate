@@ -3,6 +3,8 @@ services:
     web:
       build: .
       image: creature-api-boilerplate
+      security_opt:
+        - no-new-privileges:true
       environment: 
         PORT: 3030
         NODE_ENV: production
