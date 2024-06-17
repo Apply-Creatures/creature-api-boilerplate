@@ -2,6 +2,7 @@ import "@feathersjs/transport-commons";
 import type { HookContext } from "@feathersjs/feathers";
 import type { Application } from "./declarations";
 import logger from "./logger";
+import type { AuthenticationResult } from "@feathersjs/authentication";
 
 export default function (app: Application): void {
 	if (typeof app.channel !== "function") {
@@ -14,7 +15,7 @@ export default function (app: Application): void {
 	});
 
 	// biome-ignore lint/suspicious/noExplicitAny: <explanation>
-	app.on("login", (authResult: any, { connection }: any) => {
+	app.on("login", (_: AuthenticationResult, { connection }: any) => {
 		// connection can be undefined if there is no
 		// real-time connection, e.g. when logging in via REST
 		if (connection) {
@@ -40,7 +41,7 @@ export default function (app: Application): void {
 			// app.channel(`userIds/$(user.id}`).join(channel);
 		}
 	});
-	app.publish((data: Record<string, unknown>, hook: HookContext) => {
+	app.publish((_: Record<string, unknown>, __: HookContext) => {
 		// Here you can add event publishers to channels set up in `channels.js`
 		// To publish only for a specific event use `app.publish(eventname, () => {})`
 

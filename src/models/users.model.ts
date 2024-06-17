@@ -59,16 +59,16 @@ export default function (
 		{
 			id: {
 				type: UUID,
-        defaultValue: DataTypes.UUIDV4,
+       			defaultValue: DataTypes.UUIDV4,
 				primaryKey: true,
 				unique: true,
-        allowNull: false
+        		allowNull: false
 			},
       username: {
-        type: DataTypes.STRING,
-				allowNull: false,
-				unique: true,
-      },
+			type: DataTypes.STRING,
+					allowNull: false,
+					unique: true,
+			},
 			email: {
 				type: DataTypes.STRING,
 				allowNull: false,

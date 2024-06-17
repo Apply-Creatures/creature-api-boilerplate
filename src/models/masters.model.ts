@@ -8,8 +8,6 @@ import {
 	type Sequelize,
 } from "sequelize";
 
-import { v4 as uuidv4 } from "uuid";
-
 import type { Application } from "../declarations";
 
 export interface MasterAttributes {
@@ -47,7 +45,7 @@ export default function (
 		{
 			id: {
 				type: DataTypes.INTEGER.UNSIGNED,
-       			defaultValue: uuidv4(),
+				defaultValue: DataTypes.UUIDV4,
 				autoIncrement: true,
 				primaryKey: true,
         		allowNull: false
