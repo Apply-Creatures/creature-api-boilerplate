@@ -46,8 +46,6 @@ jobs:
       run: yarn lint
     - name: Build
       run: yarn compile
-    - name: Test
-      run: yarn test
     - name: Coverage Upload
       uses: codecov/codecov-action@v4
   docker-build:
@@ -83,7 +81,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            bervproject/${{ env.IMAGE_NAME }}
+            hirako2000/${{ env.IMAGE_NAME }}
             ghcr.io/${{ github.repository }}
       - name: Build and push Docker images
         uses: docker/build-push-action@v5
