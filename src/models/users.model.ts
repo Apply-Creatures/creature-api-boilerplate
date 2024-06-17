@@ -9,6 +9,8 @@ import {
 } from "sequelize";
 
 import { UUID } from "sequelize";
+import { v4 as uuidv4 } from "uuid";
+
 import type { Application } from "../declarations";
 
 export interface UserAttributes {
@@ -59,15 +61,15 @@ export default function (
 		{
 			id: {
 				type: UUID,
-       			defaultValue: DataTypes.UUIDV4,
+				defaultValue: uuidv4(),
 				primaryKey: true,
 				unique: true,
-        		allowNull: false
+        allowNull: false
 			},
       username: {
 			type: DataTypes.STRING,
-					allowNull: false,
-					unique: true,
+				allowNull: false,
+				unique: true,
 			},
 			email: {
 				type: DataTypes.STRING,
