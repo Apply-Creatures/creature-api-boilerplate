@@ -1,29 +1,30 @@
-import swaggerJSDoc, { type Response } from 'swagger-jsdoc';
-import swaggerUi from 'swagger-ui-express';
+import swaggerJSDoc, { type Response } from "swagger-jsdoc";
+import swaggerUi from "swagger-ui-express";
 import type { Application } from "./declarations";
 
 const swaggerDefinition = {
-  openapi: '3.0.0',
-  info: {
-    title: 'Apply Creatures APIs',
-    version: '1.0.0',
-    description: 'This is the OpenAPI docs of this server, you may try out any endpoint from here. You may create a user, then authenticate, to be able to invoke protected endpoints. There is also RedDoc, which is generated from the swagger spec',
-  },
+	openapi: "3.0.0",
+	info: {
+		title: "Apply Creatures APIs",
+		version: "1.0.0",
+		description:
+			"This is the OpenAPI docs of this server, you may try out any endpoint from here. You may create a user, then authenticate, to be able to invoke protected endpoints. There is also RedDoc, which is generated from the swagger spec",
+	},
 };
 
 const options = {
-  swaggerDefinition,
-  apis: ['./src/**/*.ts'],
+	swaggerDefinition,
+	apis: ["./src/**/*.ts"],
 };
 
 const swaggerSpec = swaggerJSDoc(options);
 
 export default (app: Application): void => {
-  app.use('/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
+	app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
-    // Redoc setup
-    app.use('/redoc', (_: Request, res: Response) => {
-      res.send(`
+	// Redoc setup
+	app.use("/redoc", (_: Request, res: Response) => {
+		res.send(`
         <!doctype html>
         <html>
           <head>
@@ -47,11 +48,11 @@ export default (app: Application): void => {
           </body>
         </html>
       `);
-    });
-    
-    // Serve the Swagger JSON
-    app.get('/api-docs/swagger.json', (req: Request, res: Response) => {
-      res.setHeader('Content-Type', 'application/json');
-      res.send(swaggerSpec);
-    });
+	});
+
+	// Serve the Swagger JSON
+	app.get("/api-docs/swagger.json", (req: Request, res: Response) => {
+		res.setHeader("Content-Type", "application/json");
+		res.send(swaggerSpec);
+	});
 };

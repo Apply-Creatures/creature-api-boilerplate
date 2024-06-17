@@ -1,8 +1,8 @@
 import "@feathersjs/transport-commons";
+import type { AuthenticationResult } from "@feathersjs/authentication";
 import type { HookContext } from "@feathersjs/feathers";
 import type { Application } from "./declarations";
 import logger from "./logger";
-import type { AuthenticationResult } from "@feathersjs/authentication";
 
 export default function (app: Application): void {
 	if (typeof app.channel !== "function") {

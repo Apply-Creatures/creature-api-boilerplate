@@ -1,14 +1,14 @@
 import {
 	type AuthenticationResult,
 	AuthenticationService,
-	JWTStrategy
+	JWTStrategy,
 } from "@feathersjs/authentication";
 import { LocalStrategy } from "@feathersjs/authentication-local";
 import type { Params } from "@feathersjs/feathers";
 
+import type { JsonObject } from "swagger-ui-express";
 import type { Application } from "./declarations";
 import logger from "./logger";
-import type { JsonObject } from "swagger-ui-express";
 
 declare module "./declarations" {
 	interface AuthServiceTypes {
@@ -17,7 +17,6 @@ declare module "./declarations" {
 }
 
 class MyAuthenticationService extends AuthenticationService {
-
 	/**
 	 * @swagger
 	 * components:
@@ -114,16 +113,19 @@ class MyAuthenticationService extends AuthenticationService {
 	 *         - authentication
 	 *         - user
 	 */
-	async getPayload(authResult: AuthenticationResult, params: Params): Promise<AuthenticationResult> {
+	async getPayload(
+		authResult: AuthenticationResult,
+		params: Params,
+	): Promise<AuthenticationResult> {
 		// Call original `getPayload` first
 		const payload = await super.getPayload(authResult, params);
 
 		if (!authResult) {
-		 throw new Error('No AuthenticationResult found');
+			throw new Error("No AuthenticationResult found");
 		}
 
 		return Object.assign(payload, {
-			authResult: replaceUndefinedKeys(authResult)
+			authResult: replaceUndefinedKeys(authResult),
 		});
 	}
 }
@@ -135,22 +137,23 @@ type JsonArray = JsonValue[];
 // That's some unfortunate hack! Unsolved mystery: AuthenticationResult for some reasons..
 // places undefined keys. I couldn't see why and found it  safe to just replace with user key
 // until I find the culprit/reason
-const replaceUndefinedKeys = (obj: AuthenticationResult): AuthenticationResult => {
-  if (obj && typeof obj === 'object') {
-    // biome-ignore lint/complexity/noForEach: <explanation>
-    Object.keys(obj).forEach(key => {
-      const value = obj[key];
-      if (typeof value === 'object' && value !== null) {
-        replaceUndefinedKeys(value as AuthenticationResult);
-      }
-      if (key === 'undefined') {
-        obj.user = value;
-        delete obj[key];
-      }
-    });
-  }
-  return obj;
-}
+const replaceUndefinedKeys = (
+	obj: AuthenticationResult,
+): AuthenticationResult => {
+	if (obj && typeof obj === "object") {
+		Object.keys(obj).forEach((key) => {
+			const value = obj[key];
+			if (typeof value === "object" && value !== null) {
+				replaceUndefinedKeys(value as AuthenticationResult);
+			}
+			if (key === "undefined") {
+				obj.user = value;
+				delete obj[key];
+			}
+		});
+	}
+	return obj;
+};
 
 /**
  * @swagger
@@ -195,29 +198,27 @@ const replaceUndefinedKeys = (obj: AuthenticationResult): AuthenticationResult =
 
  *              
  */
-export function configureStrategies (app: Application): void {
+export function configureStrategies(app: Application): void {
 	logger.info("configuring local and jwt strategies");
 	const authentication = new MyAuthenticationService(app);
 
 	authentication.register("jwt", new JWTStrategy());
 
-
 	app.use("authentication", authentication);
-  	// Ensure settings are correctly applied to the authentication service
-  	app.set('authentication', {
-			secret: app.get('authentication').secret || "1234",
-			strategies: ['jwt', 'local'],
-			authStrategies: ['jwt', 'local'],  // Ensure this line is included
-			service: "users",
-			path: '/authentication',
-			local: {
-			usernameField: 'email', // or 'username' based on your user model
-			passwordField: 'password'
-		}
-  	});
+	// Ensure settings are correctly applied to the authentication service
+	app.set("authentication", {
+		secret: app.get("authentication").secret || "1234",
+		strategies: ["jwt", "local"],
+		authStrategies: ["jwt", "local"], // Ensure this line is included
+		service: "users",
+		path: "/authentication",
+		local: {
+			usernameField: "email", // or 'username' based on your user model
+			passwordField: "password",
+		},
+	});
 
-
-	  authentication.register("local", new LocalStrategy());
+	authentication.register("local", new LocalStrategy());
 
 	// Optionally, reconfigure the authentication service to ensure it picks up the settings
 	// im not sure about this, it does get picked and fails if we set it.

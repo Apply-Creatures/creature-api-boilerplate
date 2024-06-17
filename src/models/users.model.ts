@@ -15,12 +15,12 @@ import type { Application } from "../declarations";
 
 export interface UserAttributes {
 	id: string;
-  	username: string,
+	username: string;
 	email: string;
 	password?: string;
 	role: string;
 	createdAt?: string; // ISO date string
-    updatedAt?: string; // ISO date string
+	updatedAt?: string; // ISO date string
 }
 
 interface UserCreationAttributes extends Optional<UserAttributes, "id"> {}
@@ -64,10 +64,10 @@ export default function (
 				defaultValue: uuidv4(),
 				primaryKey: true,
 				unique: true,
-        allowNull: false
+				allowNull: false,
 			},
-      username: {
-			type: DataTypes.STRING,
+			username: {
+				type: DataTypes.STRING,
 				allowNull: false,
 				unique: true,
 			},
@@ -78,7 +78,7 @@ export default function (
 			},
 			password: {
 				type: DataTypes.STRING,
-				allowNull: false
+				allowNull: false,
 			},
 			role: {
 				type: DataTypes.STRING,
@@ -98,7 +98,7 @@ export default function (
 	(users as any).associate = (models: any) => {
 		// Define associations here
 		// See http://docs.sequelizejs.com/en/latest/docs/associations/
-	};  
+	};
 
 	return users;
 }

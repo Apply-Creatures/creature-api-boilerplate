@@ -51,7 +51,7 @@ export default function (
 				defaultValue: uuidv4(),
 				autoIncrement: true,
 				primaryKey: true,
-        		allowNull: false
+				allowNull: false,
 			},
 			text: {
 				type: DataTypes.STRING,

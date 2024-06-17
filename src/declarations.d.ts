@@ -2,8 +2,7 @@ import type { Sequelize } from "sequelize";
 import "@feathersjs/transport-commons";
 import type { HookContext as FeathersHookContext } from "@feathersjs/feathers";
 
-import '@feathersjs/feathers';
-
+import "@feathersjs/feathers";
 
 export interface Configuration {
 	// Put types for app.get and app.set here
