@@ -1,10 +1,11 @@
 <!-- PROJECT SHIELDS -->
 
-[![Contributors][contributors-shield]][contributors-url]
+[![Codacy Badge][codacy-shield]][codacy-url]
+[![Issues][issues-shield]][issues-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![repo-size][repo-size-shield]][repo-size-url]
+[![Contributors][contributors-shield]][contributors-url]
 [![license][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -252,6 +253,8 @@ If you decide to re-use this repo to build your own stuff, go ahead. No need to 
 **Don't re-republish stuff pretty much as is though**, it is lame, and shameless.
 Tweak it, make it your own. Make it so that I wouldn't come across your stuff  and think that it is mine. So that nobody comes across your stuff and somehow finds out it's a louzy copy of someone else lacking added value and personalisation.
 
+[codacy-url]: https://app.codacy.com/gh/Apply-Creatures/creature-api-boilerplate/dashboard
+[codacy-shield]: https://img.shields.io/codacy/grade/9dc0ec9bd55b4091a8b998816ae5b4e7?style=for-the-badge
 [contributors-shield]: https://img.shields.io/github/contributors/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
 [contributors-url]: https://github.com/apply-creatures/creature-api-boilerplate/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
