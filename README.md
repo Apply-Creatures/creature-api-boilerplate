@@ -64,51 +64,8 @@ OK, DOkey
 
 <hr/>
 
-**TL;DR**
+**TL;DR** - skip to [getting-started](#getting-started)
 
-## 🛠 Installation & Set Up
-
-
-1. Install and use the correct version of Node using [nvm](https://github.com/nvm-sh/nvm)
-
-   ```sh
-   nvm install
-   ```
-
-2. Install dependencies
-
-   ```sh
-   npm install
-   ```
-
-3. Start postgres
-
-    you may also want to create the database or the server may crash at startup 
-
-    ```sh
-    psql -U postgres -h localhost
-    CREATE DATABASE feathersjs_boilerplate;
-    ```
-
-4. Start the development server
-
-   ```sh
-   npm run dev
-   ```
-
-## 🚀 Building and Running for Production
-
-1. Generate a full static production build
-
-   ```sh
-   npm run compile
-   ```
-
-2. Serve the API as it will appear once deployed
-
-   ```sh
-   npm run start:prod
-   ```
 
 <hr/>
 
@@ -162,15 +119,15 @@ If you've truly tried everything and still can't get this to work for you, try t
 
 - you need [Git](https://git-scm.com/) installed
 - and [nodejs](https://nodejs.org/) of course
-- postgres
+- [postgres](https://www.postgresql.org/) installed
 
-### Repo
+### Set up repo
 
 ```bash
 $ git clone https://github.com/apply-creatures/creature-api-boilerplate.git
 ```
 
-Navigate to the repo root's folder then install dependencies
+Navigate to the repo root's folder & install dependencies
 
 ```bash
 $ cd ./creature-api-boilerplate && npm install
@@ -184,7 +141,7 @@ you may also want to create the database or the server may crash at startup
 
 ```sh
 psql -U postgres -h localhost
-CREATE DATABASE feathersjs_boilerplate;
+CREATE DATABASE creature_api_boilerplate;
 ```
 
 **Launch in develop mode**
@@ -257,6 +214,7 @@ If you spread direct connections in your service, it will be hard to keep things
 - [x] Fix auth - creating users with encrypted password works, but for some reason logging in with password does not work
 - [x] ReDoc from swagger spec
 - [x] Serve some static landing page with links to docs
+- [x] Some env variable for DB settings
 - [ ] More testing
 - [ ] More I guess
 

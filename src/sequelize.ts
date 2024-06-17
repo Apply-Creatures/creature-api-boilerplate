@@ -6,9 +6,16 @@ export function setupSequelize (app: Application): void {
 
 	const dialect = 'postgres'; // Or your dialect name
 
-	const connectionUrl = "postgres://postgres:@localhost:5432/feathersjs_boilerplate";
-	const connectionString = connectionUrl; // "postgres";
-	const sequelize = new Sequelize(connectionString, {
+	// Use environment variables for the connection details
+	const host = process.env.POSTGRES_HOST || 'localhost';
+	const database = process.env.POSTGRES_DB || 'creature_api_boilerplate';
+	const username = process.env.POSTGRES_USER || 'postgres';
+	const password = process.env.POSTGRES_PASSWORD || '';
+	const port = process.env.POSTGRES_PORT || '5432';
+
+	const connectionUrl = `postgres://${username}:${password}@${host}:${port}/${database}`;
+
+	const sequelize = new Sequelize(connectionUrl, {
 		dialect: dialect,
 		logging: false,
 		define: {

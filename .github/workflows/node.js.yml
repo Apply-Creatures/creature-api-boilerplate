@@ -9,8 +9,7 @@ on:
   pull_request:
     branches: [ main ]
 env:
-  # TODO: Change variable to your image's name.
-  IMAGE_NAME: feathersjs-boilerplate
+  IMAGE_NAME: creature-api-boilerplate
 jobs:
   build:
     runs-on: ubuntu-22.04
@@ -24,7 +23,7 @@ jobs:
         # Provide the password for postgres
         env:
           POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: feathers
+          POSTGRES_DB: creature_api_boilerplate
         # Set health checks to wait until postgres has started
         options: >-
           --health-cmd pg_isready
