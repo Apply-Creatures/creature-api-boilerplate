@@ -47,10 +47,10 @@ export default function (
 		{
 			id: {
 				type: DataTypes.INTEGER.UNSIGNED,
-				defaultValue: uuidv4(),
+       			defaultValue: uuidv4(),
 				autoIncrement: true,
 				primaryKey: true,
-				allowNull: false
+        		allowNull: false
 			},
 			text: {
 				type: DataTypes.STRING,
