@@ -5,6 +5,9 @@ services:
       image: creature-api-boilerplate
       security_opt:
         - no-new-privileges:true
+      read_only: true
+      tmpfs:
+        - /tmp
       environment: 
         PORT: 3030
         NODE_ENV: production
