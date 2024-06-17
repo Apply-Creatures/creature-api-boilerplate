@@ -43,7 +43,9 @@
     "lint": "npx @biomejs/biome check --write ./src",
     "start": "yarn run compile && node lib/",
     "start:prod": "node lib/",
-    "compile": "shx rm -rf lib/ && tsc"
+    "precompile": "npm run clean",
+    "compile": "tsc",
+    "clean": "[ -d lib ] && shx rm -rf lib/ || true"
   },
   "standard": {
     "env": [

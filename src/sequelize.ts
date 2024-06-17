@@ -54,8 +54,7 @@ export function setupSequelize (app: Application): void {
 		});
 
 		logger.info("About to sync DB...");
-
-		sequelize.sync()
+		sequelize.sync({ alter: true })
 			.then(() => {
 				logger.info('Database synchronized successfully.');
 			})
