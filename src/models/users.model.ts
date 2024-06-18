@@ -60,7 +60,7 @@ export default function (
 		"users",
 		{
 			id: {
-				type: UUID,
+				type: DataTypes.UUID,
 				defaultValue: uuidv4(),
 				primaryKey: true,
 				unique: true,

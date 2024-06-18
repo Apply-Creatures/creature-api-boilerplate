@@ -47,10 +47,10 @@ export default function (
 		"masters",
 		{
 			id: {
-				type: UUID,
+				type: DataTypes.UUID,
 				defaultValue: uuidv4(),
-				autoIncrement: true,
 				primaryKey: true,
+				unique: true,
 				allowNull: false,
 			},
 			text: {

@@ -6,13 +6,16 @@ export function setupSequelize(app: Application): void {
 	const dialect = "postgres"; // Or your dialect name
 
 	// Use environment variables for the connection details
-	const host = process.env.POSTGRES_HOST || "localhost";
+	const host = process.env.POSTGRES_HOST || "localhost"; // postgresapp.internal on fly.io
 	const database = process.env.POSTGRES_DB || "creature_api_boilerplate";
 	const username = process.env.POSTGRES_USER || "postgres";
 	const password = process.env.POSTGRES_PASSWORD || "";
 	const port = process.env.POSTGRES_PORT || "5432";
 
-	const connectionUrl = `postgres://${username}:${password}@${host}:${port}/${database}`;
+	let connectionUrl = `postgres://${username}:${password}@${host}:${port}/${database}`;
+	if (process.env.POSTGRES_PASSWORD) {
+		connectionUrl =  process.env.DATABASE_URL || "dead";
+	}
 
 	const sequelize = new Sequelize(connectionUrl, {
 		dialect: dialect,
