@@ -10,6 +10,20 @@ const swaggerDefinition = {
 		description:
 			"This is the OpenAPI docs of this server, you may try out any endpoint from here. You may create a user, then authenticate, to be able to invoke protected endpoints. There is also RedDoc, which is generated from the swagger spec",
 	},
+  components: {
+    securitySchemes: {
+      bearerAuth: {
+        type: "http",
+        scheme: "bearer",
+        bearerFormat: "JWT",
+      },
+    },
+  },
+  security: [
+    {
+      bearerAuth: [],
+    },
+  ],
 };
 
 const options = {
