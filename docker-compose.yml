@@ -2,18 +2,26 @@ version: "3.9"
 services:
     web:
       build: .
-      image: feathersjs
+      image: creature-api-boilerplate
+      security_opt:
+        - no-new-privileges:true
+      read_only: true
+      tmpfs:
+        - /tmp
       environment: 
         PORT: 3030
         NODE_ENV: production
         HOST: feathersjs
-        DATABASE_URL: "postgres://postgres:pgsecret123@db:5432/feathersjs_boilerplate"
+        DATABASE_URL: "postgres://postgres:pgsecret123@db:5432/creature_api_boilerplate"
       ports:
         - "3030:3030"
       links:
         - db
     db:
       image: postgres:15-alpine
+      security_opt:
+        - no-new-privileges:true
+      read_only: true
       environment: 
         POSTGRES_PASSWORD: pgsecret123
-        POSTGRES_DB: feathersjs_boilerplate
+        POSTGRES_DB: creature_api_boilerplate

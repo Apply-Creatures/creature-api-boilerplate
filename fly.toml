@@ -1,0 +1,23 @@
+# fly.toml app configuration file generated for creature-api-boilerplate on 2024-06-18T18:53:44+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'creature-api-boilerplate'
+primary_region = 'waw'
+
+[build]
+
+[env]
+  LOG_LEVEL = 'info'
+
+[http_service]
+  internal_port = 3030
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  size = 'shared-cpu-1x'

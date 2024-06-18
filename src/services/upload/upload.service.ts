@@ -2,10 +2,10 @@
 import type { NextFunction, Request, Response } from "express";
 import multer from "multer";
 import type { Application } from "../../declarations";
+import logger from "../../logger";
 import createModel from "../../models/upload.model";
 import { Upload } from "./upload.class";
 import hooks from "./upload.hooks";
-import logger from "../../logger";
 
 const multipartMiddleware = multer();
 
@@ -42,6 +42,5 @@ export default function (app: Application): void {
 	const service = app.service("upload");
 
 	service.hooks(hooks);
-  logger.info("Upload service is hooked");
-
+	logger.info("Upload service is hooked");
 }

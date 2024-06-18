@@ -8,16 +8,11 @@ const host = app.get("host") || "localhost";
 const task = app.listen(port);
 
 process.on("unhandledRejection", (reason, p) => {
-		logger.error(`odd rejection ${reason}`);
-		logger.error("Unhandled Rejection at: Promise ", p, reason)
-	}
-);
+	logger.error(`odd rejection ${reason}`);
+	logger.error("Unhandled Rejection at: Promise ", p, reason);
+});
 
 logger.info("Once task is ready...");
 task.then((server: Server) => {
-	logger.info(
-		"Feathers application started on http://%s:%d",
-		host,
-		port,
-	);
+	logger.info("Feathers application started on http://%s:%d", host, port);
 });

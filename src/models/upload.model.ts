@@ -8,8 +8,8 @@ import {
 	type Sequelize,
 } from "sequelize";
 
+import { UUID } from "sequelize";
 import { v4 as uuidv4 } from "uuid";
-
 
 import type { Application } from "../declarations";
 
@@ -47,11 +47,11 @@ export default function (
 		"upload",
 		{
 			id: {
-				type: DataTypes.INTEGER.UNSIGNED,
-        defaultValue: uuidv4(),
-				autoIncrement: true,
+				type: DataTypes.UUID,
+				defaultValue: uuidv4(),
 				primaryKey: true,
-        allowNull: false
+				unique: true,
+				allowNull: false,
 			},
 			url: {
 				type: DataTypes.STRING,

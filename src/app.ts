@@ -3,7 +3,7 @@ import compress from "compression";
 import cors from "cors";
 import helmet from "helmet";
 import favicon from "serve-favicon";
-import { configureAllServices } from './services/index';
+import { configureAllServices } from "./services/index";
 
 import express, {
 	errorHandler,
@@ -23,8 +23,8 @@ import channels from "./channels";
 import type { Application } from "./declarations";
 import logger from "./logger";
 import middleware from "./middleware";
-import {setupSequelize} from "./sequelize";
-import docSetup from './swagger-redoc'; // Adjust the import path accordingly
+import { setupSequelize } from "./sequelize";
+import docSetup from "./swagger-redoc";
 
 const app: Application = express(feathers());
 
@@ -55,12 +55,10 @@ app.configure(middleware);
 // Set up event channels (see channels.js)
 app.configure(channels);
 
-
 setupSequelize(app);
 
 // Set up our services (see `services/index.js`)
 configureAllServices(app);
-
 
 // Configure a middleware for 404s and the error handler
 app.use(notFound());

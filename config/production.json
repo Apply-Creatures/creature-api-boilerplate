@@ -1,6 +1,6 @@
 {
   "host": "HOST",
-  "port": "PORT",
-  "postgres": "DATABASE_URL"
-
+  "port": "5432",
+  "postgres": "DATABASE_URL",
+  "comment": "Not really using those, env variable's easier, but could do"
 }

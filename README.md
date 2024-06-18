@@ -1,10 +1,11 @@
 <!-- PROJECT SHIELDS -->
 
-[![Contributors][contributors-shield]][contributors-url]
+[![Codacy Badge][codacy-shield]][codacy-url]
+[![Issues][issues-shield]][issues-url]
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
-[![Issues][issues-shield]][issues-url]
 [![repo-size][repo-size-shield]][repo-size-url]
+[![Contributors][contributors-shield]][contributors-url]
 [![license][license-shield]][license-url]
 
 <!-- PROJECT LOGO -->
@@ -64,51 +65,8 @@ OK, DOkey
 
 <hr/>
 
-**TL;DR**
+**TL;DR** - skip to [getting-started](#getting-started)
 
-## 🛠 Installation & Set Up
-
-
-1. Install and use the correct version of Node using [nvm](https://github.com/nvm-sh/nvm)
-
-   ```sh
-   nvm install
-   ```
-
-2. Install dependencies
-
-   ```sh
-   npm install
-   ```
-
-3. Start postgres
-
-    you may also want to create the database or the server may crash at startup 
-
-    ```sh
-    psql -U postgres -h localhost
-    CREATE DATABASE feathersjs_boilerplate;
-    ```
-
-4. Start the development server
-
-   ```sh
-   npm run dev
-   ```
-
-## 🚀 Building and Running for Production
-
-1. Generate a full static production build
-
-   ```sh
-   npm run compile
-   ```
-
-2. Serve the API as it will appear once deployed
-
-   ```sh
-   npm run start:prod
-   ```
 
 <hr/>
 
@@ -162,15 +120,15 @@ If you've truly tried everything and still can't get this to work for you, try t
 
 - you need [Git](https://git-scm.com/) installed
 - and [nodejs](https://nodejs.org/) of course
-- postgres
+- [postgres](https://www.postgresql.org/) installed
 
-### Repo
+### Set up repo
 
 ```bash
 $ git clone https://github.com/apply-creatures/creature-api-boilerplate.git
 ```
 
-Navigate to the repo root's folder then install dependencies
+Navigate to the repo root's folder & install dependencies
 
 ```bash
 $ cd ./creature-api-boilerplate && npm install
@@ -184,7 +142,7 @@ you may also want to create the database or the server may crash at startup
 
 ```sh
 psql -U postgres -h localhost
-CREATE DATABASE feathersjs_boilerplate;
+CREATE DATABASE creature_api_boilerplate;
 ```
 
 **Launch in develop mode**
@@ -217,13 +175,77 @@ But if you are truely in production as this point you may need to check the Dock
 
 ### Deploy
 
-To host the server, better use a container. Or you may try that but check what it's doing first.
+#### First time deploy
+
+To stand up the server and db, use a containers.
+
+1. Launch the app
 
 ```bash
-$ npm run deploy
+fly launch
 ```
 
-_you should really look at the scripts in [package.json](./package.json), search for "scripts".
+Make sure to use the appropriate port in the config, and that it creates a postgres machine too.
+
+then
+
+2. Create the DB (optional)
+
+It may be required, for some reason the db does not create, if that is the case, do it yourself. 
+Once the db machine is created, look at the fly doc to connect to it via their cli. Then create the DB.
+
+3. Set env secrets:
+
+```bash
+fly secrets set POSTGRES_PASSWORD=thepassword # password is shown during db machine creation
+fly secrets set POSTGRES_HOST=host.internal # e.g creature-api-boilerplate-db.internal
+```
+
+It will restart the app and thing should be all set, if not...
+
+4. Check logs
+
+Go check the monitoring page, the live logs would show you if the app failed for whatever reason to start properly.
+
+_here is how  a clean start looks like:_
+
+```bash
+2024-06-18T12:21:19.673 runner[148e2592a77e18] waw [info] Machine started in 441ms
+2024-06-18T12:21:19.674 proxy[148e2592a77e18] waw [info] machine started in 444.309174ms
+2024-06-18T12:21:20.312 app[148e2592a77e18] waw [info] > creature-api-boilerplate@0.3.0 start:prod
+2024-06-18T12:21:20.312 app[148e2592a77e18] waw [info] > node lib/
+2024-06-18T12:21:21.651 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.650Z] [info] []: configuring local and jwt strategies
+2024-06-18T12:21:21.715 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.715Z] [info] []: About to check authenticate...
+2024-06-18T12:21:21.716 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.716Z] [info] []: Setting sequelizeClient...
+2024-06-18T12:21:21.725 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.725Z] [info] []: Masters service is hooked
+2024-06-18T12:21:21.727 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.727Z] [info] []: Upload service is hooked
+2024-06-18T12:21:21.729 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.729Z] [info] []: User service is hooked
+2024-06-18T12:21:21.729 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.729Z] [info] []: setting hooks...
+2024-06-18T12:21:21.733 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.733Z] [info] []: About to sync DB...
+2024-06-18T12:21:21.734 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.734Z] [info] []: Once task is ready...
+2024-06-18T12:21:21.747 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.747Z] [info] []: Feathers application started on http://localhost:3030
+2024-06-18T12:21:21.793 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.792Z] [info] []: Connection has been established successfully.
+2024-06-18T12:21:21.871 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.871Z] [info] []: Database synchronized successfully.
+2024-06-18T12:21:22.145 proxy[148e2592a77e18] waw [info] machine became reachable in 2.471743984s
+```
+
+5. Hit the app via browser
+
+Navigate to the app public hostname, it should show some page.
+
+#### subsequent deploments
+
+1. Run:
+
+```bash
+$ fly deploy
+```
+
+that's it.
+
+2. Check logs
+
+Go check the monitoring page, the live logs, in case you've broken it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -257,6 +279,7 @@ If you spread direct connections in your service, it will be hard to keep things
 - [x] Fix auth - creating users with encrypted password works, but for some reason logging in with password does not work
 - [x] ReDoc from swagger spec
 - [x] Serve some static landing page with links to docs
+- [x] Some env variable for DB settings
 - [ ] More testing
 - [ ] More I guess
 
@@ -294,6 +317,8 @@ If you decide to re-use this repo to build your own stuff, go ahead. No need to 
 **Don't re-republish stuff pretty much as is though**, it is lame, and shameless.
 Tweak it, make it your own. Make it so that I wouldn't come across your stuff  and think that it is mine. So that nobody comes across your stuff and somehow finds out it's a louzy copy of someone else lacking added value and personalisation.
 
+[codacy-url]: https://app.codacy.com/gh/Apply-Creatures/creature-api-boilerplate/dashboard
+[codacy-shield]: https://img.shields.io/codacy/grade/9dc0ec9bd55b4091a8b998816ae5b4e7?style=for-the-badge
 [contributors-shield]: https://img.shields.io/github/contributors/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge
 [contributors-url]: https://github.com/apply-creatures/creature-api-boilerplate/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/apply-creatures/creature-api-boilerplate.svg?style=for-the-badge

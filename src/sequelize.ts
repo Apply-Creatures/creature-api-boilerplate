@@ -2,29 +2,39 @@ import { Sequelize } from "sequelize";
 import type { Application } from "./declarations";
 import logger from "./logger";
 
-export function setupSequelize (app: Application): void {
+export function setupSequelize(app: Application): void {
+	const dialect = "postgres"; // Or your dialect name
 
-	const dialect = 'postgres'; // Or your dialect name
+	// Use environment variables for the connection details
+	const host = process.env.POSTGRES_HOST || "localhost"; // postgresapp.internal on fly.io
+	const database = process.env.POSTGRES_DB || "creature_api_boilerplate";
+	const username = process.env.POSTGRES_USER || "postgres";
+	const password = process.env.POSTGRES_PASSWORD || "";
+	const port = process.env.POSTGRES_PORT || "5432";
 
-	const connectionUrl = "postgres://postgres:@localhost:5432/feathersjs_boilerplate";
-	const connectionString = connectionUrl; // "postgres";
-	const sequelize = new Sequelize(connectionString, {
+	let connectionUrl = `postgres://${username}:${password}@${host}:${port}/${database}`;
+	if (process.env.POSTGRES_PASSWORD) {
+		connectionUrl = process.env.DATABASE_URL || "dead";
+	}
+
+	const sequelize = new Sequelize(connectionUrl, {
 		dialect: dialect,
 		logging: false,
 		define: {
 			freezeTableName: true,
-		}
+		},
 	});
 
 	logger.info("About to check authenticate...");
-	sequelize.authenticate()
-    .then(() => {
-      logger.info('Connection has been established successfully.');
-    })
-    .catch(err => {
-      logger.error('Unable to connect to the database:', err);
-      process.exit(1);
-    });
+	sequelize
+		.authenticate()
+		.then(() => {
+			logger.info("Connection has been established successfully.");
+		})
+		.catch((err) => {
+			logger.error("Unable to connect to the database:", err);
+			process.exit(1);
+		});
 
 	const oldSetup = app.setup;
 
@@ -38,7 +48,6 @@ export function setupSequelize (app: Application): void {
 
 		// Set up data relationships
 		const models = sequelize.models;
-		// biome-ignore lint/complexity/noForEach: <explanation>
 		Object.keys(models).forEach((name) => {
 			if ("associate" in models[name]) {
 				// biome-ignore lint/suspicious/noExplicitAny: <explanation>
@@ -47,17 +56,16 @@ export function setupSequelize (app: Application): void {
 		});
 
 		logger.info("About to sync DB...");
-
-		sequelize.sync()
+		sequelize
+			.sync({ alter: true })
 			.then(() => {
-				logger.info('Database synchronized successfully.');
+				logger.info("Database synchronized successfully.");
 			})
-			.catch(err => {
-				logger.error('Failed to synchronize database:', err);
+			.catch((err) => {
+				logger.error("Failed to synchronize database:", err);
 				process.exit(1);
 			});
 
 		return result;
 	};
-
 }
