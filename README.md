@@ -175,13 +175,77 @@ But if you are truely in production as this point you may need to check the Dock
 
 ### Deploy
 
-To host the server, better use a container. Or you may try that but check what it's doing first.
+#### First time deploy
+
+To stand up the server and db, use a containers.
+
+1. Launch the app
 
 ```bash
-$ npm run deploy
+fly launch
 ```
 
-_you should really look at the scripts in [package.json](./package.json), search for "scripts".
+Make sure to use the appropriate port in the config, and that it creates a postgres machine too.
+
+then
+
+2. Create the DB (optional)
+
+It may be required, for some reason the db does not create, if that is the case, do it yourself. 
+Once the db machine is created, look at the fly doc to connect to it via their cli. Then create the DB.
+
+3. Set env secrets:
+
+```bash
+fly secrets set POSTGRES_PASSWORD=thepassword # password is shown during db machine creation
+fly secrets set POSTGRES_HOST=host.internal # e.g creature-api-boilerplate-db.internal
+```
+
+It will restart the app and thing should be all set, if not...
+
+4. Check logs
+
+Go check the monitoring page, the live logs would show you if the app failed for whatever reason to start properly.
+
+_here is how  a clean start looks like:_
+
+```bash
+2024-06-18T12:21:19.673 runner[148e2592a77e18] waw [info] Machine started in 441ms
+2024-06-18T12:21:19.674 proxy[148e2592a77e18] waw [info] machine started in 444.309174ms
+2024-06-18T12:21:20.312 app[148e2592a77e18] waw [info] > creature-api-boilerplate@0.3.0 start:prod
+2024-06-18T12:21:20.312 app[148e2592a77e18] waw [info] > node lib/
+2024-06-18T12:21:21.651 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.650Z] [info] []: configuring local and jwt strategies
+2024-06-18T12:21:21.715 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.715Z] [info] []: About to check authenticate...
+2024-06-18T12:21:21.716 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.716Z] [info] []: Setting sequelizeClient...
+2024-06-18T12:21:21.725 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.725Z] [info] []: Masters service is hooked
+2024-06-18T12:21:21.727 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.727Z] [info] []: Upload service is hooked
+2024-06-18T12:21:21.729 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.729Z] [info] []: User service is hooked
+2024-06-18T12:21:21.729 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.729Z] [info] []: setting hooks...
+2024-06-18T12:21:21.733 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.733Z] [info] []: About to sync DB...
+2024-06-18T12:21:21.734 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.734Z] [info] []: Once task is ready...
+2024-06-18T12:21:21.747 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.747Z] [info] []: Feathers application started on http://localhost:3030
+2024-06-18T12:21:21.793 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.792Z] [info] []: Connection has been established successfully.
+2024-06-18T12:21:21.871 app[148e2592a77e18] waw [info] [2024-06-18T12:21:21.871Z] [info] []: Database synchronized successfully.
+2024-06-18T12:21:22.145 proxy[148e2592a77e18] waw [info] machine became reachable in 2.471743984s
+```
+
+5. Hit the app via browser
+
+Navigate to the app public hostname, it should show some page.
+
+#### subsequent deploments
+
+1. Run:
+
+```bash
+$ fly deploy
+```
+
+that's it.
+
+2. Check logs
+
+Go check the monitoring page, the live logs, in case you've broken it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
