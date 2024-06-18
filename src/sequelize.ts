@@ -14,7 +14,7 @@ export function setupSequelize(app: Application): void {
 
 	let connectionUrl = `postgres://${username}:${password}@${host}:${port}/${database}`;
 	if (process.env.POSTGRES_PASSWORD) {
-		connectionUrl =  process.env.DATABASE_URL || "dead";
+		connectionUrl = process.env.DATABASE_URL || "dead";
 	}
 
 	const sequelize = new Sequelize(connectionUrl, {
