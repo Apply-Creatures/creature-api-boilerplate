@@ -1,7 +1,7 @@
 {
   "name": "creature-api-boilerplate",
   "description": "A Boilerplate for creatures APIs",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "homepage": "https://github.com/apply-creatures/creature-api-boilerplate",
   "license": "MIT",
   "main": "src",
