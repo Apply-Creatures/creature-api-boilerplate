@@ -23,7 +23,9 @@ declare module "../../declarations" {
  * @swagger
  * /users:
  *   get:
- *     summary: Retrieve a list of users
+ *     summary: Retrieve list of users
+ *     security:
+ *       - bearerAuth: []
  *     tags: [Users]
  *     responses:
  *       200:
