@@ -14,14 +14,14 @@
 
   <h3 align="center">Creature API Boilerplate</h3>
 
-   <a href="#">
+   <a href="https://api-boilerplate.applycreatures.com/">
       <img src="public/apply-creatures-logo.png" alt="screenshot" width="30%">
    </a>
 
   <p align="center">
     Boilerplate for REST API components
     <br />
-    <a href="#"><strong>See live (soon) »</strong></a>
+    <a href="https://api-boilerplate.applycreatures.com/"><strong>See live (soon) »</strong></a>
     <br />
     <br />
     <a href="https://github.com/apply-creatures/creature-api-boilerplate/issues">Report Bug</a>
