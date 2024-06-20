@@ -1,5 +1,12 @@
 ## Changelog
 
+__0.4.0__
+
+- Fixes numerous vulns
+- Cleans up docker file and simplifications
+- Adds authorize widget to Swagger
+- Fixes remaining type issues for consistency and to make postgres happy
+
 __0.3.0__
 
 - Adds ReDoc, swagger UI
