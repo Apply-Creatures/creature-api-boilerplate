@@ -1,0 +1,42 @@
+pipeline:
+  name: crearture-stork
+  identifier: crearturestork
+  projectIdentifier: default_project
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: connectorgithub
+        repoName: creature-api-boilerplate
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Arm64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: install fly cli
+                  identifier: install_fly_cli
+                  spec:
+                    shell: Sh
+                    command: curl -L https://fly.io/install.sh | sh
+              - step:
+                  type: Run
+                  name: fly deploy
+                  identifier: fly_deploy
+                  spec:
+                    shell: Sh
+                    command: fly deploy
