@@ -39,4 +39,4 @@ pipeline:
                   identifier: fly_deploy
                   spec:
                     shell: Sh
-                    command: fly deploy
+                    command: /home/harness/.fly/bin/fly deploy
