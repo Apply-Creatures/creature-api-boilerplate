@@ -37,7 +37,8 @@
   },
   "scripts": {
     "preinstall": "npx npm-force-resolutions",
-    "test": "jest --forceExit",
+    "unit-test": "jest --forceExit",
+    "test": "npm run lint:check && npm run unit-test",
     "dev": "ts-node-dev --no-notify src/",
     "lint:check": "npx @biomejs/biome check ./src",
     "lint": "npx @biomejs/biome check --write ./src",
