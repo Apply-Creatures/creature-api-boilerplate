@@ -4,5 +4,5 @@ steps:
     commands:
       - curl -L https://fly.io/install.sh | sh
       - export FLY_HOME=$(find /tmp -type d -name 'home' -path '/tmp/woodpecker*/home/.fly' -print -quit)
-      - export PATH=$FLY_HOME/bin:$PATH 
+      - FLY_HOME=$(ls -latrh /tmp/woodpecker-local-*/home/.fly | head -1 | cut -d' ' -f9- | dirname)
       - command -v "${FLY_HOME}/bin/fly" && "${FLY_HOME}/bin/fly" deploy --remote-only
