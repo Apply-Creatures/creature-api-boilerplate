@@ -2,6 +2,4 @@ steps:
   - name: deploy
     image: /bin/bash
     commands:
-      - curl -L https://fly.io/install.sh | sh
-      - FLY_HOME=$(ls -d /tmp/woodpecker-local-*/home/.fly)
-      - $FLY_HOME/bin/fly deploy --remote-only
+      - fly deploy --remote-only
