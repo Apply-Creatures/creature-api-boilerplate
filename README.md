@@ -260,7 +260,7 @@ That's it.
 
 ### Adding an endpoint
 
-An endpoint is a service.
+An endpoint is a service. 
 
 - Look at an exiting hook in the [services](./src/services/) folder 
 - Create your own service, or add a function to an existing one
