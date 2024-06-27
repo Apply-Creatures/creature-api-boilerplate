@@ -3,4 +3,6 @@ steps:
     image: /bin/bash
     commands:
       - curl -L https://fly.io/install.sh | sh
-      - fly deploy
+      - export FLYCTL_INSTALL="/root/.fly"
+      - export PATH=$FLYCTL_INSTALL/bin:$PATH
+      - /root/.fly/bin/fly deploy
