@@ -1,6 +1,6 @@
 steps:
   - name: deploy
-    image: bash
+    image: /bin/bash
     commands:
       - curl -L https://fly.io/install.sh | sh
       - fly deploy
