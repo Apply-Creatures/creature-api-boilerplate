@@ -7,4 +7,4 @@ steps:
       - export PATH=$FLYCTL_INSTALL/bin:$PATH
       - export FLY_HOME=$(find /tmp -type d -name 'home' -path '/tmp/woodpecker*/home/.fly' -print -quit)
       - export PATH=$FLY_HOME/bin:$PATH 
-      - fly deploy --remote-only
+      - "${FLY_HOME}/bin/fly" deploy --remote-only
