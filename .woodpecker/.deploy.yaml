@@ -1,9 +1,6 @@
 steps:
   - name: deploy
-    image: alpine
+    image: bash
     commands:
       - curl -L https://fly.io/install.sh | sh
       - fly deploy
-
-depends_on:
-  - test

@@ -1,9 +1,0 @@
-steps:
-  - name: test
-    image: node:lts-slim
-    commands:
-      - npm install
-      - npm run test
-
-depends_on:
-  - build

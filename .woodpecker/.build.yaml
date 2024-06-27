@@ -1,6 +1,0 @@
-steps:
-  - name: build
-    image: node:lts-slim
-    commands:
-      - npm install
-      - npm run compile
