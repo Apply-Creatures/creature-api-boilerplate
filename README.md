@@ -175,7 +175,7 @@ But if you are truely in production as this point you may need to check the Dock
 
 ### Deploy
 
-#### First time deploy
+**First time deploy**
 
 To stand up the server and db, use a containers.
 
@@ -229,7 +229,16 @@ _here is how  a clean start looks like:_
 2024-06-18T12:21:22.145 proxy[148e2592a77e18] waw [info] machine became reachable in 2.471743984s
 ```
 
-5. Hit the app via browser
+Almost done, we need a SSL/TLS certificate.
+
+6. Generate a certificate
+
+```bash
+certs add someapp.example.com # of course just an example
+# and you can then add the appname.fly.dev as CNAME DNS entry in your DNS holder
+```
+
+7. Hit the app via browser
 
 Navigate to the app public hostname, it should show some page.
 
@@ -241,11 +250,11 @@ Navigate to the app public hostname, it should show some page.
 $ fly deploy
 ```
 
-that's it.
-
 2. Check logs
 
 Go check the monitoring page, the live logs, in case you've broken it.
+
+That's it.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
